@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+'use strict';
 
 const onMouseOver = event => {
   const el = event.target;
