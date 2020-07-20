@@ -71,7 +71,7 @@
         if (isAddToNavBar) {
           addToNavBar(hoverText, infospot);
         }
-      }  
+      }
 
       function removeListElems(room1, room2) {
         //remove all but 1 elem from list1
@@ -96,7 +96,7 @@
           addToNavBar(hoverText, infospot2);
         }
       }
-      
+
 
       function onFocus () {
         this.focus( parameters.duration, TWEEN.Easing[ parameters.curve ][ parameters.easing ] );
@@ -156,23 +156,23 @@
       // test panorama video
       panorama_video = new PANOLENS.VideoPanorama( 'https://pchen66.github.io/Panolens/examples/asset/textures/video/1941-battle-low.mp4' );
       // linkPanoRooms(panorama, panorama_video, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(4602.58, 1863.13, -547.70), 1000);
-      linkPanoRooms (panorama, blackRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000); 
-      linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000); 
-    
+      linkPanoRooms (panorama, blackRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+
       // // Recording image dimensions
       const { edgeLength } = panorama;
       radius = edgeLength / 2;
 
 
-      linkPanoInfoSpot (new THREE.Vector3(2383.71, 975.13, -3247.48), false, "heyyyyya", panorama, true);
-      linkPanoInfoSpotWtInfo(new THREE.Vector3(3883.71, 745.13, -3047.48),"desc-container" , true, panorama, "hii", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
+      linkPanoInfoSpot (new THREE.Vector3(-421.71, 579.03, -5000.00), false, "Foreign Service Officers", panorama, true);
+      linkPanoInfoSpotWtInfo(new THREE.Vector3(-52.49, 836.42, -5000.00),"desc-container" , true, panorama, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
 
-      linkPanoInfoSpotWtInfo(new THREE.Vector3(3283.71, 345.13, -2000.48), 'desc-container', true,  panorama, "yey", PANOLENS.DataImage.Info);
-  
+      linkPanoInfoSpotWtInfo(new THREE.Vector3(-5000.00, 748.82, 89.61), 'desc-container', true,  panorama, "Civil Service Officers", PANOLENS.DataImage.Info);
+
 
       // Removes the template div from list
       list.removeChild(listItem);
-      
+
       addScenes();
 
     </script>
