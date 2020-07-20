@@ -131,10 +131,19 @@
 
       // panorama = new PANOLENS.ImagePanorama('https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/whiteSpaceRoomv5.jpg');
 
-      panorama = new PANOLENS.CubePanorama( ['https://rosemaryy.github.io/impactHack/assets/walls/b.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/f.jpg',
-        'https://rosemaryy.github.io/impactHack/assets/walls/l.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/r.jpg',
-        'https://rosemaryy.github.io/impactHack/assets/walls/u.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/d.jpg'
+      // panorama = new PANOLENS.CubePanorama( ['https://rosemaryy.github.io/impactHack/assets/walls/b.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/f.jpg',
+      //   'https://rosemaryy.github.io/impactHack/assets/walls/l.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/r.jpg',
+      //   'https://rosemaryy.github.io/impactHack/assets/walls/u.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/d.jpg'
+      // ] );
+
+      const path = 'assets/cubeWalls/';
+      const format = '.png';
+      panorama = new PANOLENS.CubePanorama( [
+          path + 'px' + format, path + 'nx' + format,
+          path + 'py' + format, path + 'ny' + format,
+          path + 'pz' + format, path + 'nz' + format
       ] );
+
       blackRoom = new PANOLENS.ImagePanorama('https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/blackSpaceRoomv5.png');
 
 
