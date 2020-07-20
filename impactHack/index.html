@@ -137,14 +137,20 @@
       // ] );
 
       const path = 'assets/cubeWalls/';
+      var roomColor = 'whiteRoom/';
       const format = '.png';
       panorama = new PANOLENS.CubePanorama( [
-          path + 'px' + format, path + 'nx' + format,
-          path + 'py' + format, path + 'ny' + format,
-          path + 'pz' + format, path + 'nz' + format
+          path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
+          path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
+          path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
       ] );
 
-      blackRoom = new PANOLENS.ImagePanorama('https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/blackSpaceRoomv5.png');
+      roomColor = 'blackRoom/';
+      blackRoom = new PANOLENS.CubePanorama( [
+          path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
+          path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
+          path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
+      ] );
 
 
       // test panorama video
