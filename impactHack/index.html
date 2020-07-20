@@ -140,16 +140,16 @@
       var roomColor = 'whiteRoom/';
       const format = '.png';
       panorama = new PANOLENS.CubePanorama( [
-          path + 'px' + format, path + 'nx' + format,
-          path + 'py' + format, path + 'ny' + format,
-          path + 'pz' + format, path + 'nz' + format
+          path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
+          path + 'py' + roomColor + format, path + roomColor + 'ny' + format,
+          path + 'pz' + roomColor + format, path + roomColor + 'nz' + format
       ] );
 
       roomColor = 'blackRoom/';
       blackRoom = new PANOLENS.CubePanorama( [
-          path + 'px' + format, path + 'nx' + format,
-          path + 'py' + format, path + 'ny' + format,
-          path + 'pz' + format, path + 'nz' + format
+          path + 'px' + roomColor + format, path + 'nx' + roomColor + format,
+          path + 'py' + roomColor + format, path + 'ny' + roomColor + format,
+          path + 'pz' + roomColor + format, path + 'nz' + roomColor + format
       ] );
 
 
