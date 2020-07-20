@@ -40,9 +40,13 @@
     </div>
     </div>
     <div id="general-info-container" style="display:none">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLNxLozf2cP4sjotoqukZ2GMvTiZ50P41o"></iframe>
+      <iframe width="560" height="315" iframe src="https://www.youtube.com/embed/videoseries?list=PLNxLozf2cP4sjotoqukZ2GMvTiZ50P41o"></iframe>
       <div class="title">Featured Diplomats</div>
       <div class="text"> </div>
+    </div>
+    <div id="FSO-container" style="display:none">
+      <div class="title">Foreign Service Officers</div>
+      <div class="text">Foreign Service Officers can be sent anywhere in the world, at any time, to serve the diplomatic needs of the United States. They are the front-line personnel of all U.S. embassies, consulates, and other diplomatic missions.</div>
     </div>
     <script>
 
@@ -158,7 +162,7 @@
       radius = edgeLength / 2;
 
       linkPanoInfoSpotWtInfo (new THREE.Vector3(-109.84, 5000.00, -228.22), "general-info-container", true, panorama, "General Information", PANOLENS.DataImage.Info)
-      linkPanoInfoSpot (new THREE.Vector3(5000.00, 723.01, 4.34), false, "Foreign Service Officers", panorama, true);
+      linkPanoInfoSpotWtInfo (new THREE.Vector3(5000.00, 723.01, 4.34), false, "FSO-container", true, panorama, "Foreign Service Officers", PANOLENS.datalist.Info);
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-143.87, 546.09, -5000.00),"desc-container" , true, panorama, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-4999.97, 742.82, 76.35), 'desc-container', true,  panorama, "Civil Service Officers", PANOLENS.DataImage.Info);
 
