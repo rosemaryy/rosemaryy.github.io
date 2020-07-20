@@ -34,12 +34,16 @@
       <iframe src="https://www.youtube.com/embed/D7icsuamx5E"></iframe>
       <div class="title">Yeet</div>
       <div class="text">This is a test; we can make an iframe for the quiz (a little biger obviously - but this sorta popup could be used; we can even use this for the video resources they provided.
-      woooooooo
-    testing
-  123
-</div>
+          woooooooo
+        testing
+      123
     </div>
-
+    </div>
+    <div id="general-info-container" style="display:none">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLNxLozf2cP4sjotoqukZ2GMvTiZ50P41o"></iframe>
+      <div class="title">Featured Diplomats</div>
+      <div class="text"> </div>
+    </div>
     <script>
 
       function linkPanoRooms (panorama1, panorama2, vect1, vect2, size) {
@@ -73,17 +77,9 @@
         }
       }
 
-      function removeListElems(room1, room2) {
-        //remove all but 1 elem from list1
-        //append new elems from list 2 into list 1
-        //remove 1st elem from list 1
-
-
-      }
       function linkPanoInfoSpotWtInfo(vect, divContainer, isAddToNavBar, panoramaRoom, hoverText, image) {
         // sizing s.t. further away appears smaller
         infoSpotSize = baseScale * vect.length() / radius;
-
         // add infospot with info that pops up in same room
         infospot2 = new PANOLENS.Infospot( infoSpotSize, image);
         infospot2.position.copy(vect);
@@ -97,6 +93,11 @@
         }
       }
 
+      function removeListElems(room1, room2) {
+        //remove all but 1 elem from list1
+        //append new elems from list 2 into list 1
+        //remove 1st elem from list 1
+      }
 
       function onFocus () {
         this.focus( parameters.duration, TWEEN.Easing[ parameters.curve ][ parameters.easing ] );
@@ -129,13 +130,6 @@
         iterative: false
       };
 
-      // panorama = new PANOLENS.ImagePanorama('https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/whiteSpaceRoomv5.jpg');
-
-      // panorama = new PANOLENS.CubePanorama( ['https://rosemaryy.github.io/impactHack/assets/walls/b.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/f.jpg',
-      //   'https://rosemaryy.github.io/impactHack/assets/walls/l.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/r.jpg',
-      //   'https://rosemaryy.github.io/impactHack/assets/walls/u.jpg', 'https://rosemaryy.github.io/impactHack/assets/walls/d.jpg'
-      // ] );
-
       const path = 'assets/cubeWalls/';
       var roomColor = 'whiteRoom/';
       const format = '.png';
@@ -163,10 +157,9 @@
       const { edgeLength } = panorama;
       radius = edgeLength / 2;
 
-
+      linkPanoInfoSpotWtInfo (new THREE.Vector3(-109.84, 5000.00, -228.22), "desc-container", true, panorma, "General Information", PANOLENS.DataImage.Info)
       linkPanoInfoSpot (new THREE.Vector3(5000.00, 723.01, 4.34), false, "Foreign Service Officers", panorama, true);
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-143.87, 546.09, -5000.00),"desc-container" , true, panorama, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
-
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-4999.97, 742.82, 76.35), 'desc-container', true,  panorama, "Civil Service Officers", PANOLENS.DataImage.Info);
 
 
