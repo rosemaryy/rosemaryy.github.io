@@ -118,7 +118,7 @@
         viewer.renderer.sortObjects = true;
       }
 
-      var parameters, gui, panorama, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
+      var parameters, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
 
 
       list = document.querySelector( '.mdl-list' );
@@ -134,9 +134,10 @@
         iterative: false
       };
 
-      panorama = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/whiteRoomEmpty.png');
-      blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
-
+      blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blackRoom/blackRoomEmpty.png');
+      whiteRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/whiteRoomEmpty.png');
+      redRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/redRoom/redRoomEmpty.png');
+      blueRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
 
       // const path = 'assets/cubeWalls/';
       // var roomColor = 'whiteRoom/';
@@ -157,17 +158,19 @@
       // test panorama video
       // panorama_video = new PANOLENS.VideoPanorama( 'https://pchen66.github.io/Panolens/examples/asset/textures/video/1941-battle-low.mp4' );
       // linkPanoRooms(panorama, panorama_video, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(4602.58, 1863.13, -547.70), 1000);
-      linkPanoRooms (panorama, blackRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      linkPanoRooms (blackRoom, whiteRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      linkPanoRooms (blackRoom, redRoom, new THREE.Vector3(-143.87, 546.09, -5000.00), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      linkPanoRooms (blackRoom, blueRoom, new THREE.Vector3(5000.00, 723.01, 4.34), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
       // linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
 
       // // Recording image dimensions
-      const { edgeLength } = panorama;
+      const { edgeLength } = blackRoom;
       radius = edgeLength / 2;
 
-      linkPanoInfoSpotWtInfo (new THREE.Vector3(-109.84, 5000.00, -228.22), "general-info-container", true, panorama, "General Information", PANOLENS.DataImage.Info)
-      linkPanoInfoSpotWtInfo (new THREE.Vector3(5000.00, 723.01, 4.34), "FSO-container", true, panorama, "Foreign Service Officers", PANOLENS.DataImage.Info);
-      linkPanoInfoSpotWtInfo(new THREE.Vector3(-143.87, 546.09, -5000.00),"desc-container" , true, panorama, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
-      linkPanoInfoSpotWtInfo(new THREE.Vector3(-4999.97, 742.82, 76.35), 'desc-container', true,  panorama, "Civil Service Officers", PANOLENS.DataImage.Info);
+      linkPanoInfoSpotWtInfo (new THREE.Vector3(-109.84, 5000.00, -228.22), "general-info-container", true, blackRoom, "General Information", PANOLENS.DataImage.Info)
+      linkPanoInfoSpotWtInfo (new THREE.Vector3(5000.00, 723.01, 4.34), "FSO-container", true, blackRoom, "Foreign Service Officers", PANOLENS.DataImage.Info);
+      linkPanoInfoSpotWtInfo(new THREE.Vector3(-143.87, 546.09, -5000.00),"desc-container" , true, blackRoom, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
+      linkPanoInfoSpotWtInfo(new THREE.Vector3(-4999.97, 742.82, 76.35), 'desc-container', true,  blackRoom, "Civil Service Officers", PANOLENS.DataImage.Info);
 
 
       // Removes the template div from list
