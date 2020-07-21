@@ -114,11 +114,11 @@
 
         //viewer config: https://pchen66.github.io/Panolens/docs/index.html
         viewer = new PANOLENS.Viewer( { output: 'console', container: document.querySelector( '#pcontainer' ), autoHideInfospot: false, cameraFov: 90} );
-        viewer.add( panorama, panorama_video, blackRoom); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
+        viewer.add( panorama, blackRoom); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
         viewer.renderer.sortObjects = true;
       }
 
-      var parameters, gui, panorama, panorama_video, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
+      var parameters, gui, panorama, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
 
 
       list = document.querySelector( '.mdl-list' );
@@ -134,22 +134,19 @@
         iterative: false
       };
 
-      const path = 'assets/cubeWalls/';
-      var roomColor = 'whiteRoom/';
-      const format = '.png';
-      panorama = new PANOLENS.CubePanorama( [
-          path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
-          path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
-          path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
-      ] );
+      panorama = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/whiteRoomEmpty.png');
+      blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/blueRoomEmpty.png');
 
-      var blackRoom = new PANOLENS.CubePanorama( [
-          path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
-          path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
-          path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
-      ] );
 
-      // roomColor = 'redRoom/';
+      // const path = 'assets/cubeWalls/';
+      // var roomColor = 'whiteRoom/';
+      // const format = '.png';
+      // panorama = new PANOLENS.CubePanorama( [
+      //     path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
+      //     path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
+      //     path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
+      // ] );
+
       // var blackRoom = new PANOLENS.CubePanorama( [
       //     path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
       //     path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
@@ -158,10 +155,10 @@
 
 
       // test panorama video
-      panorama_video = new PANOLENS.VideoPanorama( 'https://pchen66.github.io/Panolens/examples/asset/textures/video/1941-battle-low.mp4' );
+      // panorama_video = new PANOLENS.VideoPanorama( 'https://pchen66.github.io/Panolens/examples/asset/textures/video/1941-battle-low.mp4' );
       // linkPanoRooms(panorama, panorama_video, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(4602.58, 1863.13, -547.70), 1000);
       linkPanoRooms (panorama, blackRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
-      linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      // linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
 
       // // Recording image dimensions
       const { edgeLength } = panorama;
