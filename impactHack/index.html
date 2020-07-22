@@ -51,17 +51,24 @@
     <script>
 
       function linkPanoRooms (panorama1, panorama2, vect1, vect2, size) {
-        panorama1.link(panorama2, vect1, size); //img can be second param here
+        panorama1.linkWtMenuChange(panorama2, vect1, size); //img can be second param here
           //link pano2 to main room
-        panorama2.link(panorama1, vect2, size);
+        panorama2.linkWtMenuChange(panorama1, vect2, size);
+
+        //Add an elem here(at these 2 vectors) and then have an event listener
       }
 
-      function addToNavBar(hoverText, infospot) {
+      function addToNavBar(hoverText, infospot, panoramaRoom) {
         var item = listItem.cloneNode( true );
         item.classList.remove( 'template' );
         item.querySelector( 'button' ).textContent = hoverText;
         item.addEventListener( 'click', onFocus.bind( infospot ), false );
-        list.appendChild( item );
+        appendToNavBarList(panoRoom, item);
+      }
+
+      function getRoomList(room) {
+        // todo: fill
+        // 2d hashmap -> room as key; room list as val
       }
 
       function linkPanoInfoSpot (vect, isAnimated, hoverText, panoramaRoom, isAddToNavBar) {
@@ -77,7 +84,7 @@
 
         // Add to left panel
         if (isAddToNavBar) {
-          addToNavBar(hoverText, infospot);
+          addToNavBar(hoverText, infospot, panoramaRoom);
         }
       }
 
@@ -93,7 +100,7 @@
 
         // Add to left panel
         if (isAddToNavBar) {
-          addToNavBar(hoverText, infospot2);
+          addToNavBar(hoverText, infospot2, panoramaRoom);
         }
       }
 
@@ -108,14 +115,16 @@
       }
 
 
-      function addScenes() {
+      function addScenes(roomList) {
         // Add panorama scenes to viewer
         /* Add all scenes to viewer */ // todo: maybe change so can add 1 scene at a time
 
         //viewer config: https://pchen66.github.io/Panolens/docs/index.html
         viewer = new PANOLENS.Viewer( { output: 'console', container: document.querySelector( '#pcontainer' ), autoHideInfospot: false, cameraFov: 90} );
-        viewer.add( blackRoom, whiteRoom, redRoom, blueRoom); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
-        viewer.renderer.sortObjects = true;
+        for (scene in roomList) {
+          viewer.add(scene); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
+          viewer.renderer.sortObjects = true;
+        }
       }
 
       var parameters, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
@@ -123,7 +132,7 @@
 
       list = document.querySelector( '.mdl-list' );
       listItem = document.querySelector( '.mdl-list__item' );
-
+      loadVisibleNavBarLst = list;
 
       // Focus tweening parameter
       parameters = {
@@ -134,39 +143,27 @@
         iterative: false
       };
 
+      // Init rooms
       blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blackRoom/blackRoomEmpty.png');
       whiteRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/whiteRoomEmpty.png');
       redRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/redRoom/redRoomEmpty.png');
       blueRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
 
-      // const path = 'assets/cubeWalls/';
-      // var roomColor = 'whiteRoom/';
-      // const format = '.png';
-      // panorama = new PANOLENS.CubePanorama( [
-      //     path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
-      //     path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
-      //     path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
-      // ] );
-
-      // var blackRoom = new PANOLENS.CubePanorama( [
-      //     path + roomColor + 'px' + format, path + roomColor+ 'nx' + format,
-      //     path  + roomColor + 'py' + format, path + roomColor + 'ny' + format,
-      //     path  + roomColor +  'pz' + format, path + roomColor + 'nz' + format
-      // ] );
+      // Add rooms to list
+      const roomList = [blackRoom, whiteRoom,redRoom, blueRoom];
 
 
-      // test panorama video
-      // panorama_video = new PANOLENS.VideoPanorama( 'https://pchen66.github.io/Panolens/examples/asset/textures/video/1941-battle-low.mp4' );
-      // linkPanoRooms(panorama, panorama_video, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(4602.58, 1863.13, -547.70), 1000);
-      linkPanoRooms (blackRoom, whiteRoom, new THREE.Vector3(3883.71, 745.13, -3047.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
-      linkPanoRooms (blackRoom, redRoom, new THREE.Vector3(-143.87, 546.09, -5000.00), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
-      linkPanoRooms (blackRoom, blueRoom, new THREE.Vector3(5000.00, 723.01, 4.34), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
-      // linkPanoRooms (panorama, panorama_video, new THREE.Vector3(3983.71, 945.13, -3147.48), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      // Link Rooms
+      linkPanoRooms (blackRoom, whiteRoom, new THREE.Vector3(-5000.00, -877.80, 5.84), new THREE.Vector3(-5000.00, -877.80, 5.84), 1000);
+      linkPanoRooms (blackRoom, redRoom, new THREE.Vector3(-143.87, 546.09, -5000.00), new THREE.Vector3(-143.87, 546.09, -5000.00), 1000);
+      linkPanoRooms (blackRoom, blueRoom, new THREE.Vector3(5000.00, 723.01, 4.34), new THREE.Vector3(5000.00, 723.01, 4.34), 1000);
 
-      // // Recording image dimensions
+      // Recording image dimensions
       const { edgeLength } = blackRoom;
       radius = edgeLength / 2;
 
+
+      // Insert Info Spots
       linkPanoInfoSpotWtInfo (new THREE.Vector3(-109.84, 5000.00, -228.22), "general-info-container", true, blackRoom, "General Information", PANOLENS.DataImage.Info)
       linkPanoInfoSpotWtInfo (new THREE.Vector3(5000.00, 723.01, 4.34), "FSO-container", true, blackRoom, "Foreign Service Officers", PANOLENS.DataImage.Info);
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-143.87, 546.09, -5000.00),"desc-container" , true, blackRoom, "Foreign Service Specialists", "https://michelleFae.github.io/ImpactHack/tempIntroRoom/assets/exhibitRooms/textSample.jpg");
@@ -176,7 +173,9 @@
       // Removes the template div from list
       list.removeChild(listItem);
 
-      addScenes();
+      setNavBarListInView(blackRoom);
+
+      addScenes(roomList);
 
     </script>
 
