@@ -121,10 +121,9 @@
 
         //viewer config: https://pchen66.github.io/Panolens/docs/index.html
         viewer = new PANOLENS.Viewer( { output: 'console', container: document.querySelector( '#pcontainer' ), autoHideInfospot: false, cameraFov: 90} );
-        for (var i = 0; i < roomList.length; i++) { {
-          viewer.add(roomList[i]); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
-          viewer.renderer.sortObjects = true;
-        }
+        viewer.add(blackRoom, whiteRoom,redRoom, blueRoom); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
+        viewer.renderer.sortObjects = true;
+        
       }
 
       var parameters, viewer, radius, button, position, infospot, timerId, easingItem, list, listItem, index = 0, baseScale = 300;
@@ -150,7 +149,7 @@
       blueRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
 
       // Add rooms to list
-      const roomList = [blackRoom, whiteRoom,redRoom, blueRoom];
+      // const roomList = [];
 
 
       // Link Rooms
