@@ -115,7 +115,7 @@
       }
 
 
-      function addScenes(roomList) {
+      function addScenes() {
         // Add panorama scenes to viewer
         /* Add all scenes to viewer */ // todo: maybe change so can add 1 scene at a time
 
@@ -131,7 +131,7 @@
 
       list = document.querySelector( '.mdl-list' );
       listItem = document.querySelector( '.mdl-list__item' );
-      loadVisibleNavBarLst = list;
+      // loadVisibleNavBarLst(list);
 
       // Focus tweening parameter
       parameters = {
@@ -169,7 +169,7 @@
       linkPanoInfoSpotWtInfo(new THREE.Vector3(-4999.97, 742.82, 76.35), 'desc-container', true,  blackRoom, "Civil Service Officers", PANOLENS.DataImage.Info);
 
 
-      addScenes(roomList);
+      addScenes();
 
 
 
