@@ -3,7 +3,6 @@ var parameters, viewer, radius, button, position, infospot, timerId, easingItem,
 
   list = document.querySelector( '.mdl-list' );
   listItem = document.querySelector( '.mdl-list__item' );
-  // loadVisibleNavBarLst(list);
 
   // Focus tweening parameter
   parameters = {
@@ -15,8 +14,8 @@ var parameters, viewer, radius, button, position, infospot, timerId, easingItem,
   };
 
   // Init rooms
-  blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blackRoom/blackRoomEmpty.png');
-  whiteRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/whiteRoomEmpty.png');
+  blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blackRoom/resizedImage/whiteRoomEmpty.png');
+  whiteRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/resizedImage/whiteRoomEmpty.png');
   redRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/redRoom/redRoomEmpty.png');
   blueRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
 
@@ -44,4 +43,5 @@ var parameters, viewer, radius, button, position, infospot, timerId, easingItem,
   // Removes the template div from list
   list.removeChild(listItem);
 
+  // Set the navbar list to visible for the first room
   setNavBarListInView(blackRoom);
