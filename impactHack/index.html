@@ -121,8 +121,8 @@
 
         //viewer config: https://pchen66.github.io/Panolens/docs/index.html
         viewer = new PANOLENS.Viewer( { output: 'console', container: document.querySelector( '#pcontainer' ), autoHideInfospot: false, cameraFov: 90} );
-        for (scene in roomList) {
-          viewer.add(scene); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
+        for (var i = 0; i < roomList.length; i++) { {
+          viewer.add(roomList[i]); //todo: MANUALLY ADD NEW SCENES HERE RN // NEED TO MAKE FUNC S.T. ITS NOT MANUAL
           viewer.renderer.sortObjects = true;
         }
       }
@@ -176,7 +176,7 @@
 
       // Removes the template div from list
       list.removeChild(listItem);
-      
+
       setNavBarListInView(blackRoom);
 
  
