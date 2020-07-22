@@ -14,7 +14,7 @@ var parameters, viewer, radius, button, position, infospot, timerId, easingItem,
   };
 
   // Init rooms
-  blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blackRoom/resizedImage/whiteRoomEmpty.png');
+  blackRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/resizedImage/whiteRoomEmpty.png');
   whiteRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/whiteRoom/resizedImage/whiteRoomEmpty.png');
   redRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/redRoom/redRoomEmpty.png');
   blueRoom = new PANOLENS.ImagePanorama('https://rosemaryy.github.io/impactHack/assets/cubeWalls/blueRoom/blueRoomEmpty.png');
